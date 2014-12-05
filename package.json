@@ -12,6 +12,10 @@
     "karma",
     "recognition"
   ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/influitive/hubot-kudos.git"
+  },
   "author": "David Mills <dave@1morepx.com>",
   "license": "MIT",
   "dependencies": {
