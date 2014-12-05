@@ -22,7 +22,7 @@ class Keeper
     scores = for own user, score of @scores
       { user: user, score: score }
     scores.sort (a,b) ->
-      a.score - b.score
+      b.score - a.score
 
   getScores: ->
     @scores
