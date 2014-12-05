@@ -1,0 +1,20 @@
+{
+  "name": "hubot-kudos",
+  "version": "0.0.1",
+  "description": "A hubot script for giving people kudos",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "karma",
+    "recognition"
+  ],
+  "author": "David Mills <dave@1morepx.com>",
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "^1.7.0"
+  }
+}
