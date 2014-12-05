@@ -2,17 +2,15 @@ _ = require('underscore')
 
 class Keeper
   constructor: (@robot) ->
-    @scores = {
-      scores: {}
-    }
+    @scores = {}
 
-    robot.brain.on 'loaded', @_brainLoaded
+    @robot.brain.on 'loaded', =>
+      @scores = _.extend @scores, @robot.brain.get('kudos')
 
   add: (user) ->
-    @scores.scores[user] ||= 0
-    @scores.scores[user]++
+    @scores[user] ||= 0
+    @scores[user]++
     @robot.brain.set 'kudos', @scores
-    console.log @robot.brain
     @robot.brain.save()
 
   leaderboard: ->
@@ -20,12 +18,8 @@ class Keeper
       "#{i + 1}: #{scores.user} - #{scores.score}"
     leaderboard.join '\n'
 
-  _brainLoaded: =>
-    @robot.logger.info @robot.brain.get('kudos')
-    @scores = _.extend @scores, @robot.brain.get('kudos')
-
   _sortedScores: ->
-    scores = for own user, score of @scores.scores
+    scores = for own user, score of @scores
       { user: user, score: score }
     scores.sort (a,b) ->
       a.score - b.score
