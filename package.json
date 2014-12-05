@@ -1,6 +1,6 @@
 {
   "name": "hubot-kudos",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A hubot script for giving people kudos",
   "main": "index.coffee",
   "scripts": {
