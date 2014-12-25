@@ -1,3 +1,6 @@
+# Description
+#   Keeps track of your kudos for you
+
 _ = require('underscore')
 
 class Keeper
@@ -10,18 +13,21 @@ class Keeper
   add: (user) ->
     @scores[user] ||= 0
     @scores[user]++
-    @robot.brain.set 'kudos', @scores
-    @robot.brain.save()
+    @_saveKudos()
 
   leaderboard: ->
     leaderboard = for scores, i in @_sortedScores()
       "#{i + 1}: #{scores.user} - #{scores.score}"
     leaderboard.join '\n'
 
+  _saveKudos: ->
+    @robot.brain.set 'kudos', @scores
+    @robot.brain.save()
+
   _sortedScores: ->
     scores = for own user, score of @scores
       { user: user, score: score }
-    scores.sort (a,b) ->
+    scores.sort (a, b) ->
       b.score - a.score
 
   getScores: ->

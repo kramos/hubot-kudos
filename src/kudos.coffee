@@ -12,7 +12,7 @@
 #   hubot leaderboard - displays the current kudos leaderboard
 #
 # Notes:
-#   <optional notes required for the script>
+#
 #
 # Author:
 #   daegren
@@ -22,7 +22,7 @@ Keeper = require('./keeper')
 module.exports = (robot) ->
   keeper = new Keeper(robot)
 
-  robot.hear /kudos to @?([\w .\-]+)$/i, (msg) ->
+  robot.hear /kudos to @?(.*)/i, (msg) ->
     name = msg.match[1].trim()
 
     users = robot.brain.usersForFuzzyName(name)
@@ -35,6 +35,9 @@ module.exports = (robot) ->
 
 
   robot.respond /leaderboard/i, (msg) ->
+    msg.send keeper.leaderboard()
+
+  robot.respond /l/i, (msg) ->
     msg.send keeper.leaderboard()
 
   robot.hear /show brain/i, (msg) ->
