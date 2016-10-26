@@ -37,11 +37,5 @@ module.exports = (robot) ->
   robot.respond /leaderboard/i, (msg) ->
     msg.send keeper.leaderboard()
 
-  robot.respond /l/i, (msg) ->
-    msg.send keeper.leaderboard()
-
-  robot.hear /show brain/i, (msg) ->
-    console.log robot.brain
-
   robot.hear /show scores/i, (msg) ->
     robot.logger.info keeper.getScores()
