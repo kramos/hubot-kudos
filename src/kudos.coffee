@@ -22,7 +22,7 @@ Keeper = require('./keeper')
 module.exports = (robot) ->
   keeper = new Keeper(robot)
 
-  robot.hear /kudos to @?(.*)/i, (msg) ->
+  robot.respond /kudos to @?(.*)/i, (msg) ->
     name = msg.match[1].trim()
 
     users = robot.brain.usersForFuzzyName(name)
@@ -37,5 +37,5 @@ module.exports = (robot) ->
   robot.respond /leaderboard/i, (msg) ->
     msg.send keeper.leaderboard()
 
-  robot.hear /show scores/i, (msg) ->
+  robot.respond /show scores/i, (msg) ->
     robot.logger.info keeper.getScores()
